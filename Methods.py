@@ -1,14 +1,12 @@
 import  os
 import shutil
-def create_folder(folder_path:str):
-    try:
-        if not os.path.exists(folder_path):
-            os.makedirs(folder_path)
-            print(f"Folder created at: {folder_path}")
+def create_folder(folder_path:str,folder_name:str):
+        full_path = os.path.join(folder_path, folder_name)  
+        if not os.path.exists(full_path):
+            os.makedirs(full_path)  # Create the folder
+            print(f"Folder '{folder_name}' created at {full_path}")
         else:
-            print(f"Folder already exists at: {folder_path}")
-    except Exception as e:
-        print(f"Error creating folder: {e}")
+            print(f"Folder '{folder_name}' already exists at {full_path}")
 
 def delete_folder(folder_path:str):
     try:
