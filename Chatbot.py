@@ -16,12 +16,11 @@ def resolve_path(path):
 
 # Define chatbot command patterns
 pairs = [
-    [r"create folder (.+)", lambda matches: create_folder(resolve_path(matches[0]))],
-    [r"delete folder (.+)", lambda matches: delete_folder(resolve_path(matches[0]))],
-    [r"copy folder (.+) to (.+)", lambda matches: copy_folder(resolve_path(matches[0]), resolve_path(matches[1]))],
-    [r"move folder (.+) to (.+)", lambda matches: move_folder(resolve_path(matches[0]), resolve_path(matches[1]))],
+    [r"create folder (.+) in (.+)", lambda matches: create_folder(matches[1], matches[0])],
+    [r"delete folder (.+)", lambda matches: delete_folder(matches[0])],
+    [r"copy folder (.+) to (.+)", lambda matches: copy_folder(matches[0], matches[1])],
+    [r"move folder (.+) to (.+)", lambda matches: move_folder(matches[0], matches[1])],
     [r"quit", ["Goodbye! Have a great day!"]],
-    [r".*", ["I didn't understand that. Try again!"]],
 ]
 
 chatbot = Chat(pairs, reflections)
